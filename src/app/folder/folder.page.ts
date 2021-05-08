@@ -8,11 +8,17 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FolderPage implements OnInit {
   public folder: string;
-
+  public rutas = [
+    { title: 'Inbox', url: 'https://ionic.io' },
+    { title: 'Outbox', url: 'https://en.wikipedia.org/wiki/Ocean' },
+    { title: 'About', url: '' },
+  ];
+  public page: string = 'https://ionic.io';
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.folder = this.activatedRoute.snapshot.paramMap.get('id');
+    this.page = this.rutas.find(data => data.title === this.folder).url;
   }
 
 }

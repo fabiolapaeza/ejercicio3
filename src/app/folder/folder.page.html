@@ -17,6 +17,17 @@
   <!-- <div id="container"> -->
     <!-- <strong class="capitalize">{{ folder }}</strong> -->
     <!-- <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p> -->
-    <iframe src="https://ionic.io" style="width: 100%; height: 100vh;"></iframe>
+    <iframe [src]="page | safe: 'resourceUrl'" style="width: 100%; height: 100vh;" *ngIf="folder !== 'About'; else about"></iframe>
+    <ng-template #about>
+      <div class="ion-text-center ion-margin-top">
+        <strong class="capitalize">{{ folder }}</strong>
+        <p>
+          Aplicación móvil en la que se puedan embeber páginas web.
+        </p>
+        <p>
+          Fabiola - 2021
+        </p>
+      </div>
+    </ng-template>
   <!-- </div> -->
 </ion-content>
